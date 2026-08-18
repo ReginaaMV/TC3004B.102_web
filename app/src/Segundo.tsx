@@ -1,6 +1,12 @@
+import { useEffect } from 'react'
 import { videojuegos } from './assets/videojuegos'
 
 function Segundo() {
+
+    useEffect(() => {
+        console.time('Segundo')
+        return () => console.timeEnd('Segundo')
+    }, [])
 
     const nombre = 'Regina'
     let edad = 21
@@ -50,7 +56,10 @@ function Segundo() {
 
     return (
         <div>
-            <h2>Variables</h2>
+            <h1>Hola Mundo!</h1>
+            <h2>Regina Martinez</h2>
+
+            <h3>Variables</h3>
             <p>{nombreCompleto2}</p>
             <p>Edad: {edad}</p>
             <p>{saludo('Regina')}</p>

@@ -1,12 +1,23 @@
+import { useEffect } from 'react'
 import { peliculas } from './assets/peliculas'
 
 /**
- * Componente 3: uso de un archivo de importación (peliculas.js).
- *
- * Se apoya en Array.prototype.find y Array.prototype.filter para
- * consultar el arreglo importado antes de renderizarlo con JSX.
+ * Componente 3: Hola Mundo + variables + uso de un archivo de
+ * importación (peliculas.js), con registro de tiempos de render.
  */
 function Tercero() {
+
+    useEffect(() => {
+        const inicio = performance.now();
+        return () => {
+            const fin = performance.now();
+            console.log(`Tercero renderizado en ${(fin - inicio).toFixed(2)} ms`);
+        };
+    }, []);
+
+    const nombre = 'Regina';
+    const apellido = 'Martinez';
+    const nombreCompleto = `${nombre} ${apellido}`;
 
     /**
      * Busca una película por su id.
@@ -23,12 +34,16 @@ function Tercero() {
     const peliculaDestacada = getPeliculaById(1);
     const peliculasNolan = getPeliculasByDirector('Christopher Nolan');
 
+    console.log('Nombre completo:', nombreCompleto);
     console.log('Película destacada:', peliculaDestacada);
     console.log('Películas de Nolan:', peliculasNolan);
 
     return (
         <div>
-            <h2>Lista de Películas</h2>
+            <h1>Hola Mundo!</h1>
+            <h2>{nombreCompleto}</h2>
+
+            <h3>Lista de Películas</h3>
 
             {peliculaDestacada && (
                 <p>
